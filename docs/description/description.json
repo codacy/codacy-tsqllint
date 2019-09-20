@@ -1,0 +1,98 @@
+[
+  {
+    "patternId": "conditional-begin-end",
+    "title": "Expected BEGIN and END statement within conditional logic block"
+  },
+  {
+    "patternId": "cross-database-transaction",
+    "title": "Cross database inserts or updates enclosed in a transaction can lead to data corruption"
+  },
+  {
+    "patternId": "data-compression",
+    "title": "Expected table to use data compression"
+  },
+  {
+    "patternId": "data-type-length",
+    "title": "Data type length not specified"
+  },
+  {
+    "patternId": "disallow-cursors",
+    "title": "Found use of CURSOR statement"
+  },
+  {
+    "patternId": "full-text",
+    "title": "Full text predicate found, this can cause performance problems"
+  },
+  {
+    "patternId": "information-schema",
+    "title": "Expected use of SYS.Partitions rather than INFORMATION_SCHEMA views"
+  },
+  {
+    "patternId": "keyword-capitalization",
+    "title": "Expected TSQL Keyword to be capitalized"
+  },
+  {
+    "patternId": "linked-server",
+    "title": "Linked server queries can cause table locking and are discouraged"
+  },
+  {
+    "patternId": "multi-table-alias",
+    "title": "Unaliased table found in multi table joins"
+  },
+  {
+    "patternId": "named-constraint",
+    "title": "Named constraints in temp tables can cause collisions when run in parallel"
+  },
+  {
+    "patternId": "non-sargable",
+    "title": "Performing functions on filter clauses or join predicates can cause performance problems"
+  },
+  {
+    "patternId": "object-property",
+    "title": "Expected use of SYS.COLUMNS rather than ObjectProperty function"
+  },
+  {
+    "patternId": "print-statement",
+    "title": "PRINT statement found"
+  },
+  {
+    "patternId": "schema-qualify",
+    "title": "Object name not schema qualified"
+  },
+  {
+    "patternId": "select-star",
+    "title": "Expected column names in SELECT"
+  },
+  {
+    "patternId": "semicolon-termination",
+    "title": "Statement not terminated with semicolon"
+  },
+  {
+    "patternId": "set-ansi",
+    "title": "Expected SET ANSI_NULLS ON near top of file"
+  },
+  {
+    "patternId": "set-nocount",
+    "title": "Expected SET NOCOUNT ON near top of file"
+  },
+  {
+    "patternId": "set-quoted-identifier",
+    "title": "Expected SET QUOTED_IDENTIFIER ON near top of file"
+  },
+  {
+    "patternId": "set-transaction-isolation-level",
+    "title": "Expected SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED near top of file"
+  },
+  {
+    "patternId": "set-variable",
+    "title": "Expected variable to be set using SELECT statement"
+  },
+  {
+    "patternId": "unicode-string",
+    "title": "Use of unicode characters in a non unicode string"
+  },
+  {
+    "patternId": "upper-lower",
+    "title": "Use of the UPPER or LOWER functions when performing comparisons in SELECT statements is not required when running database in case insensitive mode"
+  }
+]
