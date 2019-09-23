@@ -1,0 +1,135 @@
+version: 2.1
+
+orbs:
+  codacy: codacy/base@1.0.0
+  codacy_plugins_test: codacy/plugins-test@0.4.0
+
+jobs:
+  dotnet:
+    parameters:
+      cmd:
+        type: string
+        description: "The command to run"
+      persist_to_workspace:
+        type: boolean
+        description: "Whether to persist the workspace or not at the end of the job"
+        default: false
+      cache_bootstrap:
+        type: boolean
+        description: "Whether to cache bootstrap files"
+        default: false
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:2.2
+    working_directory: ~/workdir
+    steps:
+      - when:
+          condition: << parameters.cache_bootstrap >>
+          steps:
+            - restore_cache:
+                keys:
+                  - cache-bootstrap-tsqllint-v1-{{ checksum "tsqllint.version" }}
+                  - cache-bootstrap-tsqllint-v1-
+      - run:
+          name: Install packages
+          command: |
+            echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list
+            apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+            apt-get update
+            apt-get install -y mono-complete build-essential nuget
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Run command - << parameters.cmd >>
+          command: << parameters.cmd >>
+      - when:
+          condition: << parameters.cache_bootstrap >>
+          steps:
+            - save_cache:
+                key: cache-bootstrap-tsqllint-v1-{{ checksum "tsqllint.version" }}
+                paths:
+                  - ".resources"
+      - when:
+          condition: << parameters.persist_to_workspace >>
+          steps:
+            - persist_to_workspace:
+                root: ~/
+                paths:
+                  - workdir/*
+  build_docker:
+    machine: true
+    working_directory: ~/workdir
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Publish tool docker locally
+          command: docker build . -t $CIRCLE_PROJECT_REPONAME:latest
+      - run:
+          name: Save docker to file
+          command: |
+            docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - workdir/docker-image.tar
+  publish:
+    machine: true
+    working_directory: ~/workdir
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Load docker from file
+          command: docker load --input docker-image.tar
+      - deploy:
+          name: Push application Docker image
+          command: |
+            docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+            docker tag $CIRCLE_PROJECT_REPONAME codacy/$CIRCLE_PROJECT_REPONAME
+            docker tag $CIRCLE_PROJECT_REPONAME codacy/$CIRCLE_PROJECT_REPONAME:$(cat .version)
+            docker push codacy/$CIRCLE_PROJECT_REPONAME
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - codacy/checkout_and_version
+      - dotnet:
+          name: build
+          cmd: |
+            ./scripts/bootstrap.sh
+            dotnet build
+          persist_to_workspace: true
+          cache_bootstrap: true
+          requires:
+            - codacy/checkout_and_version
+      - dotnet:
+          name: test
+          cmd: dotnet test
+          persist_to_workspace: true
+          requires:
+            - build
+      - dotnet:
+          name: publish_local
+          cmd: dotnet publish -c Release
+          persist_to_workspace: true
+          requires:
+            - test
+      - build_docker:
+          requires:
+            - publish_local
+      - codacy_plugins_test/run:
+          name: plugins_test
+          requires:
+            - build_docker
+      - publish:
+          context: CodacyDocker
+          filters:
+            branches:
+              only: master
+          requires:
+            - plugins_test
+      - codacy/tag_version:
+          name: tag_version
+          requires:
+            - publish
