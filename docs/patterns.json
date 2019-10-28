@@ -1,0 +1,126 @@
+{
+  "name": "TSQLLint",
+  "version": "1.11.1",
+  "patterns": [
+    {
+      "patternId": "conditional-begin-end",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "cross-database-transaction",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "data-compression",
+      "category": "Performance",
+      "level": "Error"
+    },
+    {
+      "patternId": "data-type-length",
+      "category": "Performance",
+      "level": "Error"
+    },
+    {
+      "patternId": "disallow-cursors",
+      "category": "Performance",
+      "level": "Error"
+    },
+    {
+      "patternId": "full-text",
+      "category": "Performance",
+      "level": "Error"
+    },
+    {
+      "patternId": "information-schema",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "keyword-capitalization",
+      "category": "CodeStyle",
+      "level": "Warning"
+    },
+    {
+      "patternId": "linked-server",
+      "category": "Performance",
+      "level": "Error"
+    },
+    {
+      "patternId": "multi-table-alias",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "named-constraint",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "non-sargable",
+      "category": "Performance",
+      "level": "Error"
+    },
+    {
+      "patternId": "object-property",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "print-statement",
+      "category": "Security",
+      "level": "Error"
+    },
+    {
+      "patternId": "schema-qualify",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "select-star",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "semicolon-termination",
+      "category": "CodeStyle",
+      "level": "Warning"
+    },
+    {
+      "patternId": "set-ansi",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "set-nocount",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "set-quoted-identifier",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "set-transaction-isolation-level",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "set-variable",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "unicode-string",
+      "category": "ErrorProne",
+      "level": "Error"
+    },
+    {
+      "patternId": "upper-lower",
+      "category": "ErrorProne",
+      "level": "Error"
+    }
+  ]
+}
