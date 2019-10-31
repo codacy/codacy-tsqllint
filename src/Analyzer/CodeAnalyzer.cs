@@ -49,8 +49,9 @@ namespace Codacy.TSQLLint
 
             tmpTSQLLintPath = Path.Combine(tmpTSQLLintFolder, defaultTSQLLintConfiguration);
 
-            var tsqllintConfig = new TSQLLintConfiguration();
+            var defaultTSQLLintConfigurationPath = Path.Combine("/src", defaultTSQLLintConfiguration);
 
+            var tsqllintConfig = new TSQLLintConfiguration();
             if (!(PatternIds is null) && PatternIds.Any())
             {
                 tsqllintConfig.Rules = new Dictionary<string, string>();
@@ -65,9 +66,9 @@ namespace Codacy.TSQLLint
                     tsqllintConfig.Rules.Add(unusedPattern, "off");
                 }
             }
-            else if (File.Exists(defaultTSQLLintConfiguration))
+            else if (File.Exists(defaultTSQLLintConfigurationPath))
             {
-                var tsqlliteJSON = File.ReadAllText(defaultTSQLLintConfiguration);
+                var tsqlliteJSON = File.ReadAllText(defaultTSQLLintConfigurationPath);
                 var currentTSQLLintConfig = JsonConvert.DeserializeObject<TSQLLintConfiguration>(tsqlliteJSON);
                 tsqllintConfig.Rules = currentTSQLLintConfig.Rules;
                 tsqllintConfig.CompatibilityLevel = currentTSQLLintConfig.CompatibilityLevel;
