@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "data-compression": "error"
+    },
+    "compatability-level": 120
+}
