@@ -57,7 +57,6 @@ namespace Codacy.TSQLLint.DocsGenerator
             {
                 var instance = Activator.CreateInstance(ruleType,
                     (Action<string, string, int, int>) ((_, __, ___, ____) => { }));
-                var pattern = new Pattern();
 
                 var description = new Description();
 
@@ -66,10 +65,9 @@ namespace Codacy.TSQLLint.DocsGenerator
                     if (prop.Name == "RULE_NAME")
                     {
                         var patternId = (string) prop.GetValue(instance);
-
-                        pattern.Category = CategoryHelper.ToCategory(patternId);
-                        pattern.Level = LevelHelper.ToLevel(patternId);
-                        pattern.PatternId = patternId;
+                        var level = LevelHelper.ToLevel(patternId);
+                        var category = CategoryHelper.ToCategory(patternId);
+                        patternsFile.Patterns.Add(new Pattern(patternId, level, category));
                         description.PatternId = patternId;
                     }
                     else if (prop.Name == "RULE_TEXT")
@@ -78,7 +76,6 @@ namespace Codacy.TSQLLint.DocsGenerator
                     }
                 }
 
-                patternsFile.Patterns.Add(pattern);
                 descriptions.Add(description);
             }
 

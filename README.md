@@ -12,13 +12,13 @@ See the [codacy-engine-scala-seed](https://github.com/codacy/codacy-engine-scala
 You can create the docker by doing:
 
 ```bash
-docker build . -t <DOCKER_NAME>:<DOCKER_VERSION>
+docker build -t codacy-tsqllint .
 ```
 
 The docker is ran with the following command:
 
 ```bash
-docker run -it -v $srcDir:/src -v $configFile:/.codacyrc <DOCKER_NAME>:<DOCKER_VERSION>
+docker run -it -v $srcDir:/src -v $configFile:/.codacyrc codacy-tsqllint
 ```
 
 ## Generate Docs
