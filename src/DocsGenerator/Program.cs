@@ -38,7 +38,7 @@ namespace Codacy.TSQLLint.DocsGenerator
 
             var patternsFile = new CodacyPatterns
             {
-                Name = "TSQLLint",
+                Name = "tsqllint",
                 Version = tsqllintVersion,
                 Patterns = new List<Pattern>()
             };
