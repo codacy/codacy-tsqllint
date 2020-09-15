@@ -5,122 +5,146 @@
     {
       "patternId": "conditional-begin-end",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "cross-database-transaction",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "data-compression",
       "category": "Performance",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "data-type-length",
       "category": "Performance",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "disallow-cursors",
       "category": "Performance",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "full-text",
       "category": "Performance",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "information-schema",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "keyword-capitalization",
       "category": "CodeStyle",
-      "level": "Warning"
+      "level": "Warning",
+      "enabled": true
     },
     {
       "patternId": "linked-server",
       "category": "Performance",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "multi-table-alias",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "named-constraint",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": false
     },
     {
       "patternId": "non-sargable",
       "category": "Performance",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "object-property",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "print-statement",
       "category": "Security",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "schema-qualify",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "select-star",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "semicolon-termination",
       "category": "CodeStyle",
-      "level": "Warning"
+      "level": "Warning",
+      "enabled": true
     },
     {
       "patternId": "set-ansi",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "set-nocount",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "set-quoted-identifier",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "set-transaction-isolation-level",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "set-variable",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "unicode-string",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     },
     {
       "patternId": "upper-lower",
       "category": "ErrorProne",
-      "level": "Error"
+      "level": "Error",
+      "enabled": true
     }
   ]
 }
