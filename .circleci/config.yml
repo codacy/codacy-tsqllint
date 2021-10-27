@@ -19,7 +19,7 @@ jobs:
         description: "Whether to cache bootstrap files"
         default: false
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.2
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
     working_directory: ~/workdir
     steps:
       - when:
