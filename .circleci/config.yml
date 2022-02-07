@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@2.0.1
-  codacy_plugins_test: codacy/plugins-test@0.15.4
+  codacy: codacy/base@6.1.4
+  codacy_plugins_test: codacy/plugins-test@1.0.1
 
 jobs:
   dotnet:
@@ -96,16 +96,9 @@ workflows:
           run_multiple_tests: true
           requires:
             - publish_docker_local
-      - codacy/shell:
+      - codacy/publish_docker:
           name: publish_dockerhub
           context: CodacyDocker
-          cmd: |
-            docker load --input docker-image.tar
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker tag $CIRCLE_PROJECT_REPONAME codacy/$CIRCLE_PROJECT_REPONAME:$(cat .version)
-            docker tag $CIRCLE_PROJECT_REPONAME codacy/$CIRCLE_PROJECT_REPONAME:latest
-            docker push codacy/$CIRCLE_PROJECT_REPONAME:$(cat .version)
-            docker push codacy/$CIRCLE_PROJECT_REPONAME:latest
           requires:
             - plugins_test
           filters:
