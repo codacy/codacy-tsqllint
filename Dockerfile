@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:6.0 AS buildimage
 WORKDIR /workdir/
 
 COPY . .
-RUN dotnet publish -c Release
+RUN dotnet publish -c Release && apt-get update && apt-get install -y gnupg
 
 FROM mcr.microsoft.com/dotnet/core/runtime:6.0-alpine
 
