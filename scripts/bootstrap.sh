@@ -3,7 +3,7 @@
 set -e
 
 VERSION="$(tr -d '\n' < tsqllint.version)"
-FILE="v$VERSION.tar.gz"
+FILE="$VERSION.tar.gz"
 RESOURCES_DIR=".resources/"
 
 # Remove possible old source

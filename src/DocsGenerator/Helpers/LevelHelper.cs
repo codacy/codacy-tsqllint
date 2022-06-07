@@ -39,7 +39,11 @@ namespace Codacy.TSQLLint.DocsGenerator.Helpers
                 case "select-star":
                 case "set-ansi":
                 case "set-nocount":
+                case "case-sensitive-variables":
                 case "set-quoted-identifier":
+                case "count-star":
+                case "delete-where":
+                case "update-where":
                 case "set-transaction-isolation-level":
                 case "set-variable":
                 case "upper-lower":

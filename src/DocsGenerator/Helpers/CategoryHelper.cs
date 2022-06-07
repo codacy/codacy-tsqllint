@@ -38,6 +38,10 @@ namespace Codacy.TSQLLint.DocsGenerator.Helpers
                 case "set-nocount":
                 case "set-quoted-identifier":
                 case "set-transaction-isolation-level":
+                case "case-sensitive-variables":
+                case "count-star":
+                case "delete-where":
+                case "update-where":
                 case "set-variable":
                 case "upper-lower":
                 case "unicode-string":

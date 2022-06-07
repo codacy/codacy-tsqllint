@@ -1,7 +1,15 @@
 [
   {
+    "patternId": "case-sensitive-variables",
+    "title": "Expected variable names to use common casing"
+  },
+  {
     "patternId": "conditional-begin-end",
     "title": "Expected BEGIN and END statement within conditional logic block"
+  },
+  {
+    "patternId": "count-star",
+    "title": "COUNT(*) disallowed. Suggest COUNT(1) or COUNT(<PK>)"
   },
   {
     "patternId": "cross-database-transaction",
@@ -14,6 +22,10 @@
   {
     "patternId": "data-type-length",
     "title": "Data type length not specified"
+  },
+  {
+    "patternId": "delete-where",
+    "title": "Expected WHERE clause for DELETE statement"
   },
   {
     "patternId": "disallow-cursors",
@@ -90,6 +102,10 @@
   {
     "patternId": "unicode-string",
     "title": "Use of unicode characters in a non unicode string"
+  },
+  {
+    "patternId": "update-where",
+    "title": "Expected WHERE clause for UPDATE statement"
   },
   {
     "patternId": "upper-lower",

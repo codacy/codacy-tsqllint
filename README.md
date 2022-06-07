@@ -28,7 +28,7 @@ docker run -it -v $srcDir:/src -v $configFile:/.codacyrc <DOCKER_NAME>:<DOCKER_V
 3. Run the DocGenerator
 
 ```bash
-dotnet run -p src/DocsGenerator
+dotnet run --project src/DocsGenerator
 ```
 
 ## Test

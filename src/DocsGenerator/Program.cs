@@ -29,12 +29,9 @@ namespace Codacy.TSQLLint.DocsGenerator
                 File.Copy(file, destFile, true);
             }
 
-
-            var tsqllintVersion = XDocument.Load(@"tsqllint/source/TSQLLint.Console/TSQLLint.Console.csproj").Root
-                .Elements("PropertyGroup")
-                .SelectMany(pg => pg.Elements())
-                .First(e => e.Name == "Version")
-                .Value;
+// The reference to the tsqllint version from their repository was deleted.
+// Below should be the same version as from file tsqllint.version
+            var tsqllintVersion = "1.14.5";
 
             var patternsFile = new CodacyPatterns
             {

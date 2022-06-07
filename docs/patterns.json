@@ -1,12 +1,24 @@
 {
   "name": "tsqllint",
-  "version": "1.11.1",
+  "version": "1.14.5",
   "patterns": [
+    {
+      "patternId": "case-sensitive-variables",
+      "category": "ErrorProne",
+      "level": "Error",
+      "enabled": false
+    },
     {
       "patternId": "conditional-begin-end",
       "category": "ErrorProne",
       "level": "Error",
       "enabled": true
+    },
+    {
+      "patternId": "count-star",
+      "category": "ErrorProne",
+      "level": "Error",
+      "enabled": false
     },
     {
       "patternId": "cross-database-transaction",
@@ -25,6 +37,12 @@
       "category": "Performance",
       "level": "Error",
       "enabled": true
+    },
+    {
+      "patternId": "delete-where",
+      "category": "ErrorProne",
+      "level": "Error",
+      "enabled": false
     },
     {
       "patternId": "disallow-cursors",
@@ -139,6 +157,12 @@
       "category": "ErrorProne",
       "level": "Error",
       "enabled": true
+    },
+    {
+      "patternId": "update-where",
+      "category": "ErrorProne",
+      "level": "Error",
+      "enabled": false
     },
     {
       "patternId": "upper-lower",
