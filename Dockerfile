@@ -1,11 +1,11 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:6.0 AS buildimage
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS buildimage
 
 WORKDIR /workdir/
 
 COPY . .
 RUN dotnet publish -c Release
 
-FROM mcr.microsoft.com/dotnet/core/runtime:6.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine
 
 COPY --from=buildimage /workdir/src/Analyzer/bin/Release/netcoreapp6.0/publish/*.dll \
                        /workdir/src/Analyzer/bin/Release/netcoreapp6.0/publish/Analyzer.runtimeconfig.json /opt/docker/bin/
