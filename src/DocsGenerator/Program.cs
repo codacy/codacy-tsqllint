@@ -31,8 +31,8 @@ namespace Codacy.TSQLLint.DocsGenerator
 
 // The reference to the tsqllint version from their repository was deleted.
 // Below should be the same version as from file tsqllint.version
+         //   var tsqllintVersion = File.ReadLines("../../tsqllint.version").First();
             var tsqllintVersion = "1.14.5";
-
             var patternsFile = new CodacyPatterns
             {
                 Name = "tsqllint",
