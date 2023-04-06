@@ -5,7 +5,7 @@ WORKDIR /workdir/
 COPY . .
 RUN dotnet publish -c Release
 
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1-alpine
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1-alpine3.17
 
 COPY --from=buildimage /workdir/src/Analyzer/bin/Release/netcoreapp3.1/publish/*.dll \
                        /workdir/src/Analyzer/bin/Release/netcoreapp3.1/publish/Analyzer.runtimeconfig.json /opt/docker/bin/
