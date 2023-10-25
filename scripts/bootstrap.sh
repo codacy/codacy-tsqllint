@@ -9,6 +9,6 @@ RESOURCES_DIR=".resources/"
 # Remove possible old source
 rm -rf tsqllint/
 mkdir -p "$RESOURCES_DIR"
-wget -nc -q -O "$RESOURCES_DIR/$FILE" "https://github.com/tsqllint/tsqllint/archive/$FILE"
+wget -nc -q -O "$RESOURCES_DIR/$FILE" "https://github.com/tsqllint/tsqllint/archive/refs/tags/$FILE"
 tar -zxvf "$RESOURCES_DIR/$FILE"
 mv "tsqllint-$VERSION" tsqllint
