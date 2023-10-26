@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@10.8.0
+  codacy: codacy/base@10.9.1
   codacy_plugins_test: codacy/plugins-test@1.1.1
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
         description: "Whether to cache bootstrap files"
         default: false
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+      - image: mcr.microsoft.com/dotnet/aspnet:7.0.13-alpine3.18-amd64
     working_directory: ~/workdir
     steps:
       - when:
@@ -57,7 +57,6 @@ jobs:
                   - "*"
 
 workflows:
-  version: 2
   build-and-deploy:
     jobs:
       - codacy/checkout_and_version
@@ -97,7 +96,6 @@ workflows:
           requires:
             - publish_docker_local
       - codacy/publish_docker:
-          name: publish_dockerhub
           context: CodacyDocker
           requires:
             - plugins_test
@@ -107,6 +105,6 @@ workflows:
                 - master
       - codacy/tag_version:
           name: tag_version
-          context: CodacyDocker
+          context: CodacyAWS
           requires:
-            - publish_dockerhub
+            - codacy/publish_docker
