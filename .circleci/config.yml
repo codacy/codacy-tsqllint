@@ -19,7 +19,7 @@ jobs:
         description: "Whether to cache bootstrap files"
         default: false
     docker:
-      - image: mcr.microsoft.com/dotnet/aspnet:7.0.13-alpine3.18-amd64
+      - image: mcr.microsoft.com/dotnet/aspnet:7.0-jammy
     working_directory: ~/workdir
     steps:
       - when:
