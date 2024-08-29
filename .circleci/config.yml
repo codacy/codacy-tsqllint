@@ -64,16 +64,14 @@ workflows:
       - codacy/checkout_and_version
       - dotnet:
           name: build
-          command: |
-            ./scripts/bootstrap.sh
-            dotnet build
+          cmd: ./scripts/bootstrap.sh
           persist_to_workspace: true
           cache_bootstrap: true
           requires:
             - codacy/checkout_and_version
       - dotnet:
           name: test
-          cmd: dotnet test
+          cmd: dotnet build && dotnet test
           persist_to_workspace: true
           requires:
             - build
