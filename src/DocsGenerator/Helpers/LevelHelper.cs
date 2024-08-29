@@ -44,6 +44,13 @@ namespace Codacy.TSQLLint.DocsGenerator.Helpers
                 case "set-variable":
                 case "upper-lower":
                 case "unicode-string":
+                case "case-sensitive-variables":
+                case "count-star":
+                case "delete-where":
+                case "duplicate-empty-line":
+                case "duplicate-go":
+                case "update-where":
+                case "CaseSensitiveVariablesRule":
                     return Level.Error;
 
                 default:
