@@ -45,19 +45,19 @@ namespace Codacy.TSQLLint.DocsGenerator
                 var types = assembly.GetTypes()
                     .Where(t => t.Namespace == "TSQLLint.Infrastructure.Rules" &&
                                 t.GetInterfaces().Contains(typeof(ISqlRule)) &&
-                                t.IsClass && // Ensure it is a class
                                 t.Name.EndsWith("Rule")
                     );
 
                 foreach (var ruleType in types)
-                {
+                {   
+                    //We can't create an instance of an abstract class, that's why we need to create different processes to generate documentation
                     if (ruleType.IsAbstract)
                     {
                         GenerateDocumentationForAbstractClass(ruleType, patternsFile, descriptions);
                     }
                     else
                     {
-                        GenerateDocumentationForConcreteClass(ruleType, patternsFile, descriptions);
+                        GenerateDocumentationForClass(ruleType, patternsFile, descriptions);
                     }
                 }
 
@@ -73,7 +73,7 @@ namespace Codacy.TSQLLint.DocsGenerator
                 return 1;
             }
         }
-        private static void GenerateDocumentationForConcreteClass(Type ruleType, CodacyPatterns patternsFile, CodacyDescription descriptions)
+        private static void GenerateDocumentationForClass(Type ruleType, CodacyPatterns patternsFile, CodacyDescription descriptions)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace Codacy.TSQLLint.DocsGenerator
 
             foreach (var subclass in subclasses)
             {
-                GenerateDocumentationForConcreteClass(subclass, patternsFile, descriptions);
+                GenerateDocumentationForClass(subclass, patternsFile, descriptions);
             }
         }
     }
