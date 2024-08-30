@@ -46,7 +46,7 @@ jobs:
           condition: << parameters.cache_bootstrap >>
           steps:
             - save_cache:
-                key: cache-bootstrap-tsqllint-v1-{{ checksum "../tsqllint.version" }}
+                key: cache-bootstrap-tsqllint-v1-{{ checksum "tsqllint.version" }}
                 paths:
                   - ".resources"
       - when:
@@ -64,14 +64,16 @@ workflows:
       - codacy/checkout_and_version
       - dotnet:
           name: build
-          cmd: ./scripts/bootstrap.sh
+          cmd: |
+            ./scripts/bootstrap.sh
+            dotnet build
           persist_to_workspace: true
           cache_bootstrap: true
           requires:
             - codacy/checkout_and_version
       - dotnet:
           name: test
-          cmd: dotnet build && dotnet test
+          cmd: dotnet test
           persist_to_workspace: true
           requires:
             - build

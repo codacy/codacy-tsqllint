@@ -60,4 +60,5 @@ x86/
 *.log
 
 tsqllint/
+tsqllint
 .resources/
