@@ -9,7 +9,7 @@ if [ ! -s tsqllint.version ]; then
 fi
 
 VERSION=$(< tsqllint.version)
-FILE="v$VERSION.tar.gz"
+FILE="$VERSION.tar.gz"
 RESOURCES_DIR=".resources/"
 
 # Remove possible old source
@@ -35,7 +35,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Rename the extracted folder
-mv "$RESOURCES_DIR/$FILE" tsqllint
+mv "tsqllint-$VERSION" tsqllint
 if [ $? -ne 0 ]; then
   echo "Error: Failed to rename the extracted folder."
   exit 1

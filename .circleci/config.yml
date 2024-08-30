@@ -19,7 +19,7 @@ jobs:
         description: "Whether to cache bootstrap files"
         default: false
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:8.0
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
     working_directory: ~/workdir
     steps:
       - when:
@@ -65,10 +65,7 @@ workflows:
       - dotnet:
           name: build
           cmd: |
-            mkdir -p ".resources/"
-            wget -q -O ".resources/1.15.3.tar.gz" "https://github.com/tsqllint/tsqllint/archive/1.15.3.tar.gz"
-            tar -zxvf ".resources/1.15.3.tar.gz"
-            mv "tsqllint-1.15.3" tsqllint
+            ./scripts/bootstrap.sh
             cd tsqllint/source
             dotnet restore
             dotnet build
