@@ -68,7 +68,6 @@ workflows:
             ./scripts/bootstrap.sh
             dotnet build
           persist_to_workspace: true
-          cache_bootstrap: true
           requires:
             - codacy/checkout_and_version
       - dotnet:
