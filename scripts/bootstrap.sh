@@ -3,13 +3,7 @@
 
 set -e
 
-# Check if version file exists and is non-empty
-if [ ! -s tsqllint.version ]; then
-  echo "Error: tsqllint.version file is missing or empty."
-  exit 1
-fi
-
-VERSION=$(< tsqllint.version)
+VERSION="$(tr -d '\n' < tsqllint.version)"
 FILE="$VERSION.tar.gz"
 RESOURCES_DIR=".resources/"
 
