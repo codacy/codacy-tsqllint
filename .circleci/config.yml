@@ -68,7 +68,8 @@ workflows:
             mkdir -p ".resources/"
             wget -q -O ".resources/1.15.3.tar.gz" "https://github.com/tsqllint/tsqllint/archive/1.15.3.tar.gz"
             tar -zxvf ".resources/1.15.3.tar.gz"
-            mv ".resources/1.15.3.tar.gz" tsqllint
+            mv "tsqllint-1.15.3" tsqllint
+            cd tsqllint/source
             dotnet restore
             dotnet build
           persist_to_workspace: true
