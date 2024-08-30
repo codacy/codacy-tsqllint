@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/sh -ex
+
 
 set -e
 
@@ -18,7 +19,8 @@ mkdir -p "$RESOURCES_DIR"
 
 # Download the source file if it does not already exist
 if [ ! -f "$RESOURCES_DIR/$FILE" ]; then
-  echo "Downloading tsqllint version $VERSION..."
+  echo "VERSION is set to: $VERSION"
+  echo "Downloading from: https://github.com/tsqllint/tsqllint/archive/$FILE"
   wget -q -O "$RESOURCES_DIR/$FILE" "https://github.com/tsqllint/tsqllint/archive/$FILE"
   if [ $? -ne 0 ]; then
     echo "Error: Failed to download tsqllint version $VERSION."
