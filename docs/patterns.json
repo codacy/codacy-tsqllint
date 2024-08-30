@@ -5,7 +5,7 @@
     {
       "patternId": "case-sensitive-variables",
       "category": "ErrorProne",
-      "level": "Error",
+      "level": "Warning",
       "enabled": false
     },
     {
@@ -41,7 +41,7 @@
     {
       "patternId": "count-star",
       "category": "ErrorProne",
-      "level": "Error",
+      "level": "Warning",
       "enabled": false
     },
     {
@@ -65,7 +65,7 @@
     {
       "patternId": "delete-where",
       "category": "ErrorProne",
-      "level": "Error",
+      "level": "Warning",
       "enabled": false
     },
     {
@@ -77,13 +77,13 @@
     {
       "patternId": "duplicate-empty-line",
       "category": "ErrorProne",
-      "level": "Error",
+      "level": "Warning",
       "enabled": false
     },
     {
       "patternId": "duplicate-go",
       "category": "ErrorProne",
-      "level": "Error",
+      "level": "Warning",
       "enabled": false
     },
     {
@@ -197,7 +197,7 @@
     {
       "patternId": "update-where",
       "category": "ErrorProne",
-      "level": "Error",
+      "level": "Warning",
       "enabled": false
     },
     {
