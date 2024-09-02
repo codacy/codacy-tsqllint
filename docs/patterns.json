@@ -1,48 +1,12 @@
 {
   "name": "tsqllint",
-  "version": "1.15.3",
+  "version": "1.11.1",
   "patterns": [
-    {
-      "patternId": "case-sensitive-variables",
-      "category": "ErrorProne",
-      "level": "Warning",
-      "enabled": false
-    },
-    {
-      "patternId": "set-ansi",
-      "category": "ErrorProne",
-      "level": "Error",
-      "enabled": true
-    },
-    {
-      "patternId": "set-nocount",
-      "category": "ErrorProne",
-      "level": "Error",
-      "enabled": true
-    },
-    {
-      "patternId": "set-quoted-identifier",
-      "category": "ErrorProne",
-      "level": "Error",
-      "enabled": true
-    },
-    {
-      "patternId": "set-transaction-isolation-level",
-      "category": "ErrorProne",
-      "level": "Error",
-      "enabled": true
-    },
     {
       "patternId": "conditional-begin-end",
       "category": "ErrorProne",
       "level": "Error",
       "enabled": true
-    },
-    {
-      "patternId": "count-star",
-      "category": "ErrorProne",
-      "level": "Warning",
-      "enabled": false
     },
     {
       "patternId": "cross-database-transaction",
@@ -63,28 +27,10 @@
       "enabled": true
     },
     {
-      "patternId": "delete-where",
-      "category": "ErrorProne",
-      "level": "Warning",
-      "enabled": false
-    },
-    {
       "patternId": "disallow-cursors",
       "category": "Performance",
       "level": "Error",
       "enabled": true
-    },
-    {
-      "patternId": "duplicate-empty-line",
-      "category": "ErrorProne",
-      "level": "Warning",
-      "enabled": false
-    },
-    {
-      "patternId": "duplicate-go",
-      "category": "ErrorProne",
-      "level": "Warning",
-      "enabled": false
     },
     {
       "patternId": "full-text",
@@ -193,12 +139,6 @@
       "category": "ErrorProne",
       "level": "Error",
       "enabled": true
-    },
-    {
-      "patternId": "update-where",
-      "category": "ErrorProne",
-      "level": "Warning",
-      "enabled": false
     },
     {
       "patternId": "upper-lower",

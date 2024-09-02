@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.FileSystemGlobbing;
 using Codacy.Engine.Seed;
 using Codacy.Engine.Seed.Results;
 using Codacy.TSQLLint.Configuration;
@@ -32,9 +31,6 @@ namespace Codacy.TSQLLint
         private readonly IConsoleTimer timer;
 
         private readonly string tmpTSQLLintPath;
-
-        private IPluginHandler pluginHandler;
-        private ISqlFileProcessor fileProcessor;
 
         /// <summary>
         ///     Tool integration constructor.
@@ -141,18 +137,10 @@ namespace Codacy.TSQLLint
             configReader.LoadConfig(tmpTSQLLintPath);
 
             var fragmentBuilder = new FragmentBuilder(configReader.CompatabilityLevel);
-            var rules = RuleVisitorFriendlyNameTypeMap.Rules;
-            var ruleVisitorBuilder = new RuleVisitorBuilder(configReader, reporter, rules);
+            var ruleVisitorBuilder = new RuleVisitorBuilder(configReader, reporter);
             var ruleVisitor = new SqlRuleVisitor(ruleVisitorBuilder, fragmentBuilder, reporter);
-            pluginHandler = new PluginHandler(reporter, rules);
-            pluginHandler.ProcessPaths(configReader.GetPlugins());
-            var matcher = new Matcher();
-            matcher.AddInclude("**/*.sql");
-            var globPatternMatcher = new GlobPatternMatcher(matcher);
-            fileProcessor = new SqlFileProcessor(
-                        ruleVisitor, pluginHandler, reporter, new FileSystem(),rules.ToDictionary(x => x.Key, x => x.Value.GetType()), globPatternMatcher);
-
-
+            var pluginHandler = new PluginHandler(reporter);
+            var fileProcessor = new SqlFileProcessor(ruleVisitor, pluginHandler, reporter, new FileSystem());
 
             pluginHandler.ProcessPaths(configReader.GetPlugins());
 
