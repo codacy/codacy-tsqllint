@@ -109,6 +109,6 @@ workflows:
                 - master
       - codacy/tag_version:
           name: tag_version
-          context: CodacyDocker
+          context: CodacyAWS
           requires:
             - publish_dockerhub
