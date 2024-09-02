@@ -111,4 +111,4 @@ workflows:
           name: tag_version
           context: CodacyAWS
           requires:
-            - codacy/publish_docker
+            - publish_dockerhub
