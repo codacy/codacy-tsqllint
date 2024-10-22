@@ -7,8 +7,8 @@ RUN dotnet publish -c Release
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0
 
-COPY --from=buildimage /workdir/src/Analyzer/bin/Release/netcoreapp6.0/publish/*.dll \
-                       /workdir/src/Analyzer/bin/Release/netcoreapp6.0/publish/Analyzer.runtimeconfig.json /opt/docker/bin/
+COPY --from=buildimage /workdir/src/Analyzer/bin/Release/netcoreapp8.0/publish/*.dll \
+                       /workdir/src/Analyzer/bin/Release/netcoreapp8.0/publish/Analyzer.runtimeconfig.json /opt/docker/bin/
 
 COPY docs /docs/
 
