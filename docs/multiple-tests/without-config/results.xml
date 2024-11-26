@@ -2,7 +2,5 @@
 <checkstyle version="1.5">
     <file name="full-text.sql">
         <error source="full-text" line="4" message="Full text predicate found, this can cause performance problems" severity="error" />
-
     </file>
-    <file name="data-compression.sql"></file>
 </checkstyle>
