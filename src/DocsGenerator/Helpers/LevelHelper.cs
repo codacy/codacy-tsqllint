@@ -20,6 +20,13 @@ namespace Codacy.TSQLLint.DocsGenerator.Helpers
             {
                 case "keyword-capitalization":
                 case "semicolon-termination":
+                case "case-sensitive-variables":
+                case "count-star":
+                case "delete-where":
+                case "duplicate-empty-line":
+                case "duplicate-go":
+                case "update-where":
+                case "CaseSensitiveVariablesRule":
                     return Level.Warning;
 
                 case "conditional-begin-end":

@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@10.8.0
-  codacy_plugins_test: codacy/plugins-test@1.1.1
+  codacy: codacy/base@12.1.3
+  codacy_plugins_test: codacy/plugins-test@2.0.11
 
 jobs:
   dotnet:
@@ -19,7 +19,7 @@ jobs:
         description: "Whether to cache bootstrap files"
         default: false
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+      - image: mcr.microsoft.com/dotnet/sdk:8.0
     working_directory: ~/workdir
     steps:
       - when:
@@ -32,6 +32,7 @@ jobs:
       - run:
           name: Install packages
           command: |
+            apt-get update && apt-get install -y gnupg2
             echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list
             apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
             apt-get update
@@ -65,9 +66,10 @@ workflows:
           name: build
           cmd: |
             ./scripts/bootstrap.sh
+            cd tsqllint/source
+            dotnet restore
             dotnet build
           persist_to_workspace: true
-          cache_bootstrap: true
           requires:
             - codacy/checkout_and_version
       - dotnet:
@@ -107,6 +109,6 @@ workflows:
                 - master
       - codacy/tag_version:
           name: tag_version
-          context: CodacyDocker
+          context: CodacyAWS
           requires:
             - publish_dockerhub
