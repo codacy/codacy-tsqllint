@@ -165,12 +165,6 @@ namespace Codacy.TSQLLint
                 catch (Exception e)
                 {
                     Logger.Send(e);
-
-                    reporter.Results.Add(new CodacyResult
-                    {
-                        Filename = file,
-                        Message = "could not parse the file"
-                    });
                 }
             }
 
